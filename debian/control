@@ -13,7 +13,7 @@ Package: ocfs2-tools
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, psmisc
 Section: admin
-Suggests: ocfs2console, ocfs2-tools-cman, ocfs2-tools-pacemaker
+Suggests: ocfs2-tools-cman, ocfs2-tools-pacemaker
 Description: tools for managing OCFS2 cluster filesystems
  OCFS2 is a general purpose cluster filesystem. Unlike the initial release
  of OCFS, which supported only Oracle database workloads, OCFS2 provides
@@ -62,18 +62,3 @@ Description: tools for managing OCFS2 cluster filesystems - pacemaker support
  Linux kernel.
  .
  This package installs support for the pacemaker cluster stack.
-
-Package: ocfs2console
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, ocfs2-tools (= ${binary:Version}), python-gtk2
-Section: admin
-Description: tools for managing OCFS2 cluster filesystems - graphical interface
- OCFS2 is a general purpose cluster filesystem. Unlike the initial release
- of OCFS, which supported only Oracle database workloads, OCFS2 provides
- full support as a general purpose filesystem.  OCFS2 is a complete rewrite
- of the previous version, designed to work as a seamless addition to the
- Linux kernel.
- .
- A GUI frontend for managing OCFS2 volumes on the system. One can mount
- and unmount volumes, format, view overview information and individual
- files, and view and modify the current cluster configuration.

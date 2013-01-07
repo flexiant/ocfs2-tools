@@ -15,10 +15,6 @@ binary-install/ocfs2-tools::
 	dh_installinit -p$(cdbs_curpkg) --name=o2cb --no-restart-on-upgrade -- start 41 S . stop 6 0 6 . 
 	dh_installinit -p$(cdbs_curpkg) --name=ocfs2 --no-restart-on-upgrade -- start 65 S . stop 2 0 6 .
 
-binary-install/ocfs2console::
-	dh_python2 -p$(cdbs_curpkg)
-
 clean::
 	rm -f debian/ocfs2-tools.o2cb.*
 	rm -f vendor/common/ocfs2-tools.spec-generic
-	rm -f ocfs2console/ocfs2interface/*.so ocfs2console/ocfs2interface/confdefs.py
