@@ -2,7 +2,6 @@ cscope.*
 *.a
 *.o
 stamp-md5
-configure
 Config.make
 config.*
 autom4te.cache
