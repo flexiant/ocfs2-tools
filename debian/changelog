@@ -1,3 +1,9 @@
+ocfs2-tools (1.8.2-flexiant1) precise; urgency=low
+
+  * Import 1.8.2 source
+
+ -- Alex Bligh <amb@DBS>  Mon, 07 Jan 2013 20:06:06 +0000
+
 ocfs2-tools (1.6.3-4ubuntu1) precise; urgency=low
 
   * Build using dh_python2
