@@ -1,3 +1,9 @@
+ocfs2-tools (1.8.2-flexiant2) precise; urgency=low
+
+  * Import 1.8.2 source
+
+ -- Alex Bligh <alex@flexiant.com>  Fri, 25 Jul 2014 11:50:54 +0100
+
 ocfs2-tools (1.6.4-3ubuntu1) trusty; urgency=medium
 
   * Merge with Debian; remaining changes:
