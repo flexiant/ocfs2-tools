@@ -14,9 +14,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ocfs2-tools\n"
-"Report-Msgid-Bugs-To: Source: ocfs2-tools@packages.debian.org\n"
-"POT-Creation-Date: 2007-11-19 06:56+0100\n"
-"PO-Revision-Date: 2007-05-18 18:33+0100\n"
+"Report-Msgid-Bugs-To: ocfs2-tools@packages.debian.org\n"
+"POT-Creation-Date: 2010-03-12 19:27+0100\n"
+"PO-Revision-Date: 2008-01-31 18:53+0100\n"
 "Last-Translator: Bart Cornelis <cobaco@skolelinux.no>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr ""
 #. Description
 #: ../ocfs2-tools.templates:4001
 msgid "O2CB idle timeout:"
-msgstr ""
+msgstr "O2CB inactivitet-timeout:"
 
 #. Type: string
 #. Description
@@ -89,46 +89,52 @@ msgid ""
 "The O2CB idle timeout (expressed in milliseconds) is the time before a "
 "network connection is considered dead."
 msgstr ""
+"De 02CB inactiviteit-timeout (aangegeven in milliseconden) is de tijd die "
+"zonder activiteit moet verlopen voordat de netwerkverbinding als dood wordt "
+"gezien."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:4001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 30000 (30 seconds) and the minimum recommended value is "
 "5000 (5 seconds)."
-msgstr "De standaardwaarde is 7 (12 seconden)."
+msgstr ""
+"De standaardwaarde is 30000 (30 seconden) en de minimum aanbevolen waarde is "
+"5000 (5 seconden)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid "O2CB keepalive delay:"
-msgstr ""
+msgstr "02CB levend-houden-vertraging:"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid ""
 "The O2CB keepalive delay (expressed in milliseconds) is the maximum time "
-"before a keepalive package is sent."
+"before a keepalive packet is sent."
 msgstr ""
+"De 02CB levend-houden-vertraging (aangegeven in milliseconden) is de "
+"maximale tijd die mag verlopen alvorens een 'hou-levend'-pakket verstuurd "
+"wordt. "
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 2000 (2 seconds) and the minimum recommended value is "
 "1000 (1 second)."
-msgstr "De standaardwaarde is 7 (12 seconden)."
+msgstr ""
+"De standaardwaarde is 2000 (2 seconden) en de minimum aanbevolen waarde is "
+"1000 (1 seconde)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
 msgid "O2CB reconnect delay:"
-msgstr ""
+msgstr "02CB herverbindingsvertraging:"
 
 #. Type: string
 #. Description
@@ -137,11 +143,11 @@ msgid ""
 "The O2CB reconnect delay (expressed in milliseconds) is the minimum time "
 "between connection attempts."
 msgstr ""
+"De 02CB herverbindingsverlaging (aangegeven in milliseconden) is de minimum "
+"tijd tussen twee verbindingspogingen. "
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid "Its default and recommended minimum value is 2000 (2 seconds)."
-msgstr "De standaardwaarde is 7 (12 seconden)."
+msgstr "De standaard en aanbevolen minimumwaarde is 2000 (2 seconden)."

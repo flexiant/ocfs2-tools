@@ -1,16 +1,15 @@
-# Czech translation of ocfs2-tools debconf messages.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Galician translation of ocfs2-tools's debconf templates
 # This file is distributed under the same license as the ocfs2-tools package.
-# Miroslav Kure <kurem@debian.cz>, 2006, 2007.
+# Jacobo Tarrio <jtarrio@debian.org>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ocfs2-tools 1.2.4-1\n"
+"Project-Id-Version: ocfs2-tools\n"
 "Report-Msgid-Bugs-To: ocfs2-tools@packages.debian.org\n"
 "POT-Creation-Date: 2010-03-12 19:27+0100\n"
-"PO-Revision-Date: 2007-09-17 20:48+0200\n"
-"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
-"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"PO-Revision-Date: 2008-06-02 19:06+0100\n"
+"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,19 +18,19 @@ msgstr ""
 #. Description
 #: ../ocfs2-tools.templates:1001
 msgid "Would you like to start an OCFS2 cluster (O2CB) at boot time?"
-msgstr "Chcete spustit cluster OCFS2 (O2CB) během zavádění systému?"
+msgstr "¿Quere iniciar un clúster OCFS2 (O2CB) co ordenador?"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:2001
 msgid "Name of the cluster to start at boot time:"
-msgstr "Jméno clusteru, který se má spustit při zavádění systému:"
+msgstr "Nome do clúster a iniciar co ordenador:"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:3001
 msgid "O2CB heartbeat threshold:"
-msgstr "Práh kontroly O2CB:"
+msgstr "Umbral de latexo de O2CB:"
 
 #. Type: string
 #. Description
@@ -41,21 +40,21 @@ msgid ""
 "awaits for an I/O operation. After it, the node \"fences\" itself, and you "
 "will probably see a crash."
 msgstr ""
-"Práh kontroly O2CB nastaví maximální čas v sekundách, po který uzel očekává "
-"V/V operaci. Po této době se uzel sám \"izoluje\" a pravděpodobně se dočkáte "
-"pádu."
+"O umbral de latexo de O2CB establece o tempo máximo, en segundos, que un "
+"nodo ha agardar por unha operación de E/S. Despois del, o nodo establece "
+"unha barreira e, probablemente, vexa un fallo."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:3001
 msgid "It is calculated as the result of: (threshold - 1) x 2."
-msgstr "Hodnota se počítá jako: (práh - 1) x 2."
+msgstr "Calcúlase coma resultado de: (umbral - 1) x 2."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:3001
 msgid "Its default value is 31 (60 seconds)."
-msgstr "Výchozí hodnota je 31 (60 sekund)."
+msgstr "O seu valor por defecto é 31 (60 segundos)."
 
 #. Type: string
 #. Description
@@ -63,14 +62,14 @@ msgstr "Výchozí hodnota je 31 (60 sekund)."
 msgid ""
 "Raise it if you have slow disks and/or crashes with kernel messages like:"
 msgstr ""
-"Práh je dobré zvýšit v případě pomalých disků a/nebo pokud v syslogu vídáte "
-"zprávy jako:"
+"Auménteo se ten discos lentos e/ou fallos con mensaxes do núcleo semellantes "
+"a:"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:4001
 msgid "O2CB idle timeout:"
-msgstr "Časový limit nečinnosti O2CB:"
+msgstr "Tempo de espera de inactividade para O2CB:"
 
 #. Type: string
 #. Description
@@ -79,8 +78,8 @@ msgid ""
 "The O2CB idle timeout (expressed in milliseconds) is the time before a "
 "network connection is considered dead."
 msgstr ""
-"Časový limit nečinnosti O2CB je čas (vyjádřený v milisekundách), po kterém "
-"je síťové spojení považováno za mrtvé."
+"O tempo de espera de inactividade (expresado en milisegundos) é o tempo a "
+"agardar antes de considerar morta unha conexión de rede."
 
 #. Type: string
 #. Description
@@ -89,14 +88,14 @@ msgid ""
 "Its default value is 30000 (30 seconds) and the minimum recommended value is "
 "5000 (5 seconds)."
 msgstr ""
-"Výchozí hodnota je 30000 (30 sekund), minimální doporučená hodnota pak 5000 "
-"(5 sekund)."
+"O seu valor por defecto é 30000 (30 segundos) e o valor mínimo recomendado é "
+"5000 (5 segundos)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid "O2CB keepalive delay:"
-msgstr "Interval udržování spojení O2CB:"
+msgstr "Retraso de \"keepalive\" de O2CB:"
 
 #. Type: string
 #. Description
@@ -105,8 +104,8 @@ msgid ""
 "The O2CB keepalive delay (expressed in milliseconds) is the maximum time "
 "before a keepalive packet is sent."
 msgstr ""
-"Interval udržování spojení O2CB je maximální čas (vyjádřený v "
-"milisekundách), po kterém je odeslán udržovací paket."
+"O retraso de \"keepalive\" de O2CB (expresado en milisegundos) é o tempo "
+"máximo a agardar antes de enviar un paquete \"keepalive\"."
 
 #. Type: string
 #. Description
@@ -115,14 +114,14 @@ msgid ""
 "Its default value is 2000 (2 seconds) and the minimum recommended value is "
 "1000 (1 second)."
 msgstr ""
-"Výchozí hodnota je 2000 (2 sekund), minimální doporučená hodnota pak 1000 (1 "
-"sekunda)."
+"O seu valor por defecto é 2000 (2 segundos) e o valor mínimo recomendado é "
+"1000 (1 segundo)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
 msgid "O2CB reconnect delay:"
-msgstr "Pauza před novým připojením O2CB"
+msgstr "Retardo de reconexión de O2CB:"
 
 #. Type: string
 #. Description
@@ -131,11 +130,11 @@ msgid ""
 "The O2CB reconnect delay (expressed in milliseconds) is the minimum time "
 "between connection attempts."
 msgstr ""
-"Pauza před novým připojením O2CB je minimální čas (vyjádřený v "
-"milisekundách) mezi pokusy o nové připojení."
+"O retardo de reconexión de O2CB (expresado en milisegundos) é o tempo mínimo "
+"a agardar entre tentativas de reconexión."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
 msgid "Its default and recommended minimum value is 2000 (2 seconds)."
-msgstr "Výchozí a zároveň doporučená minimální hodnota je 2000 (2 sekundy)."
+msgstr "O seu valor por defecto e mínimo recomendado é 2000 (2 segundos)."

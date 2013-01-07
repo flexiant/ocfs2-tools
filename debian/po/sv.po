@@ -1,3 +1,4 @@
+# translation of ocfs2-tools_1.2.4-1.1_sv.po to Swedish
 #
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
@@ -11,17 +12,20 @@
 #
 #    Developers do not need to manually edit POT or PO files.
 #
+# Martin Ågren <martin.agren@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: ocfs2-tools\n"
-"Report-Msgid-Bugs-To: Source: ocfs2-tools@packages.debian.org\n"
-"POT-Creation-Date: 2007-11-19 06:56+0100\n"
-"PO-Revision-Date: 2006-12-12 08:55+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Project-Id-Version: ocfs2-tools_1.2.4-1.1_sv\n"
+"Report-Msgid-Bugs-To: ocfs2-tools@packages.debian.org\n"
+"POT-Creation-Date: 2010-03-12 19:27+0100\n"
+"PO-Revision-Date: 2008-07-24 19:25+0200\n"
+"Last-Translator: Martin Ågren <martin.agren@gmail.com>\n"
+"Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. Type: boolean
 #. Description
@@ -78,7 +82,7 @@ msgstr ""
 #. Description
 #: ../ocfs2-tools.templates:4001
 msgid "O2CB idle timeout:"
-msgstr ""
+msgstr "O2CB:s tomgångstid:"
 
 #. Type: string
 #. Description
@@ -87,46 +91,50 @@ msgid ""
 "The O2CB idle timeout (expressed in milliseconds) is the time before a "
 "network connection is considered dead."
 msgstr ""
+"O2CB:s tomgångstid (uttryckt i millisekunder) är den tid som måste förflyta "
+"innan en nätverksuppkoppling utan aktivitet anses vara död."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:4001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 30000 (30 seconds) and the minimum recommended value is "
 "5000 (5 seconds)."
-msgstr "Dess standardvärde är 7 (12 sekunder)."
+msgstr ""
+"Dess standardvärde är 30000 (30 sekunder) och det minsta rekommenderade "
+"värdet är 2000 (2 sekunder)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid "O2CB keepalive delay:"
-msgstr ""
+msgstr "O2CB:s levandehållningsintervall:"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid ""
 "The O2CB keepalive delay (expressed in milliseconds) is the maximum time "
-"before a keepalive package is sent."
+"before a keepalive packet is sent."
 msgstr ""
+"O2CB:s levandehållningsintervall (uttryckt i millisekunder) är den längsta "
+"tiden innan ett levandehållningspaket (eng. \"keepalive\") skickas."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 2000 (2 seconds) and the minimum recommended value is "
 "1000 (1 second)."
-msgstr "Dess standardvärde är 7 (12 sekunder)."
+msgstr ""
+"Dess standardvärde är 2000 (2 sekunder) och det minsta rekommenderade värdet "
+"är 1000 (1 sekund)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
 msgid "O2CB reconnect delay:"
-msgstr ""
+msgstr "O2CB:s återuppkopplingsintervall:"
 
 #. Type: string
 #. Description
@@ -135,11 +143,11 @@ msgid ""
 "The O2CB reconnect delay (expressed in milliseconds) is the minimum time "
 "between connection attempts."
 msgstr ""
+"O2CB:s återuppkopplingsintervall (uttryckt i millisekunder) är den minsta "
+"tiden mellan uppkopplingsförsök."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid "Its default and recommended minimum value is 2000 (2 seconds)."
-msgstr "Dess standardvärde är 7 (12 sekunder)."
+msgstr "Dess standard- och rekommenderade värde är 2000 (2 sekunder)."

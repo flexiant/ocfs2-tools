@@ -1,15 +1,19 @@
 Source: ocfs2-tools
 Section: admin
 Priority: optional
-Maintainer: David Martínez Moreno <ender@debian.org>
-Standards-Version: 3.7.2.0
-Build-Depends: debhelper (>= 5), po-debconf, python-support (>= 0.4), quilt, pkg-config, comerr-dev, uuid-dev, libncurses5-dev, libreadline5-dev, libglib2.0-dev (>= 2.2.3), libblkid-dev (>= 1.36), libdevmapper-dev, libselinux1-dev, libsepol1-dev, python-dev, python-gtk2
+Maintainer: Jeremy Lainé <jeremy.laine@m4x.org>
+Uploaders: Frederik Schüler <fs@debian.org>
+Standards-Version: 3.9.2
+Build-Depends: cdbs, debhelper (>= 7), po-debconf, autotools-dev, comerr-dev, uuid-dev, libncurses5-dev, libreadline-dev, libglib2.0-dev (>= 2.2.3), libblkid-dev (>= 1.36), libbz2-dev, libcman-dev, libdevmapper-dev, libdlm-dev, libdlmcontrol-dev, libxml2-dev, openais-dev, pacemaker-dev, python-dev (>= 2.6.6-3~), python-gtk2
+Homepage: http://oss.oracle.com/projects/ocfs2-tools/
+Vcs-Svn: svn://svn.debian.org/collab-maint/deb-maint/ocfs2-tools/trunk/
+Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/deb-maint/ocfs2-tools/trunk/
 
 Package: ocfs2-tools
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, psmisc
 Section: admin
-Suggests: ocfs2console
+Suggests: ocfs2console, ocfs2-tools-cman, ocfs2-tools-pacemaker
 Description: tools for managing OCFS2 cluster filesystems
  OCFS2 is a general purpose cluster filesystem. Unlike the initial release
  of OCFS, which supported only Oracle database workloads, OCFS2 provides
@@ -20,9 +24,22 @@ Description: tools for managing OCFS2 cluster filesystems
  This package installs the tools to manage the OCFS2 filesystem, including mkfs,
  tunefs, fsck, debugfs, and the utilities to control the O2CB clustering stack.
 
-Package: ocfs2-tools-static-dev
+Package: ocfs2-tools-cman
 Architecture: any
-Depends: ${shlibs:Depends}, ocfs2-tools (= ${Source-Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, libdlm3, ocfs2-tools (= ${binary:Version})
+Section: admin
+Description: tools for managing OCFS2 cluster filesystems - cman support
+ OCFS2 is a general purpose cluster filesystem. Unlike the initial release
+ of OCFS, which supported only Oracle database workloads, OCFS2 provides
+ full support as a general purpose filesystem.  OCFS2 is a complete rewrite
+ of the previous version, designed to work as a seamless addition to the
+ Linux kernel.
+ .
+ This package installs support for the cman cluster stack.
+
+Package: ocfs2-tools-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ocfs2-tools (= ${binary:Version})
 Section: devel
 Description: tools for managing OCFS2 cluster filesystems - development files
  OCFS2 is a general purpose cluster filesystem. Unlike the initial release
@@ -33,11 +50,24 @@ Description: tools for managing OCFS2 cluster filesystems - development files
  .
  This package installs the development headers and static libraries.
 
+Package: ocfs2-tools-pacemaker
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libdlm3, ocfs2-tools (= ${binary:Version})
+Section: admin
+Description: tools for managing OCFS2 cluster filesystems - pacemaker support
+ OCFS2 is a general purpose cluster filesystem. Unlike the initial release
+ of OCFS, which supported only Oracle database workloads, OCFS2 provides
+ full support as a general purpose filesystem.  OCFS2 is a complete rewrite
+ of the previous version, designed to work as a seamless addition to the
+ Linux kernel.
+ .
+ This package installs support for the pacemaker cluster stack.
+
 Package: ocfs2console
 Architecture: any
-Depends: ${shlibs:Depends}, ${python:Depends}, ocfs2-tools (= ${binary:Version}), python-gtk2
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, ocfs2-tools (= ${binary:Version}), python-gtk2
 Section: admin
-Description: tools for managing OCFS2 cluster filesystems (graphical interface)
+Description: tools for managing OCFS2 cluster filesystems - graphical interface
  OCFS2 is a general purpose cluster filesystem. Unlike the initial release
  of OCFS, which supported only Oracle database workloads, OCFS2 provides
  full support as a general purpose filesystem.  OCFS2 is a complete rewrite

@@ -1,74 +1,24 @@
 #!/usr/bin/make -f
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
 
-# Uncomment this to turn on verbose mode.
-# export DH_VERBOSE=1
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-debug \
+	--enable-dynamic-ctl \
+	--enable-dynamic-fsck
+DEB_INSTALL_EXAMPLES_ocfs2-tools = documentation/samples/cluster.conf
 
-include /usr/share/quilt/quilt.make
-
-configure: patch configure-stamp
-configure-stamp:
-	dh_testdir
-	./configure --disable-debug \
-				--enable-dynamic-ctl \
-				--enable-dynamic-fsck \
-				--prefix=/usr \
-				--exec-prefix=/usr \
-				--mandir=/usr/share/man
-	touch $@
-
-build: configure build-stamp
-build-stamp:
-	dh_testdir
-	$(MAKE)
-	touch $@
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-
-	$(MAKE) install DESTDIR=`pwd`/debian/tmp/
-
-# Install manual stuff
-
+common-install-arch::
 	cp -f vendor/common/o2cb.init debian/ocfs2-tools.o2cb.init
-	cp -f vendor/common/o2cb.sysconfig debian/ocfs2-tools.o2cb.default
 	cp -f vendor/common/ocfs2.init debian/ocfs2-tools.ocfs2.init
 
-	dh_install --sourcedir=debian/tmp --list-missing
-	dh_installinit --name=o2cb  --no-restart-on-upgrade -- start 60 S . start 6 0 6 .
-	dh_installinit --name=ocfs2 --no-restart-on-upgrade -- start 65 S . start 2 0 6 .
-	dh_installdocs
-	dh_installexamples documentation/samples/cluster.conf
-	dh_installchangelogs
+binary-install/ocfs2-tools::
+	dh_installinit -p$(cdbs_curpkg) --name=o2cb --no-restart-on-upgrade -- start 41 S . stop 6 0 6 . 
+	dh_installinit -p$(cdbs_curpkg) --name=ocfs2 --no-restart-on-upgrade -- start 65 S . stop 2 0 6 .
 
-binary-arch: install
-	dh_testdir
-	dh_testroot
-	dh_strip 
-	dh_compress
-	dh_installdebconf
-	dh_fixperms
-	dh_makeshlibs
-	dh_shlibdeps
-	dh_pysupport
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+binary-install/ocfs2console::
+	dh_python2 -p$(cdbs_curpkg)
 
-binary-indep:
-# do nothing
-
-binary: binary-arch binary-indep
-
-clean: unpatch
-	dh_testdir
-	dh_testroot
-	dh_clean
-	rm -rf debian/patches/log/ .pc
-	rm -f *-stamp debian/ocfs2-tools.o2cb.* debian/ocfs2-tools.ocfs2.*
-	rm -f vendor/common/ocfs2-tools.spec
-	rm -f ocfs2console/ocfs2interface/*so
-	$(MAKE) distclean
-	debconf-updatepo
+clean::
+	rm -f debian/ocfs2-tools.o2cb.*
+	rm -f vendor/common/ocfs2-tools.spec-generic
+	rm -f ocfs2console/ocfs2interface/*.so ocfs2console/ocfs2interface/confdefs.py

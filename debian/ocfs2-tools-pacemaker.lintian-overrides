@@ -1,0 +1,2 @@
+# this program is not meant to be invoked manually
+ocfs2-tools-pacemaker: binary-without-manpage usr/sbin/ocfs2_controld.pcmk
