@@ -338,7 +338,7 @@ static int query_run(struct tunefs_operation *op, ocfs2_filesys *fs,
 	register_printf_function('O', handle_ro_compat, handle_arginfo);
 
 	query_fs = fs;
-	fprintf(stdout, fmt);
+	fprintf(stdout, fmt, 0);
 	query_fs = NULL;
 
 	ocfs2_free(&fmt);
