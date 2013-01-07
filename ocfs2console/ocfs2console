@@ -13,6 +13,11 @@ nodeconf = process_args()
 #
 import warnings
 warnings.filterwarnings("error")
+
+# Ignore the depreciation warning that popen2 will raise when it is imported.
+# FIXME: Pending conversion to subprocess module.
+warnings.simplefilter("ignore", DeprecationWarning)
+
 try:
     import gtk
 except Exception, e:
