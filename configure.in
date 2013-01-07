@@ -275,11 +275,11 @@ if test "x$cpg_found" = "xyes"; then
         fi
         # TRY="$TRY"
 
-        saved_LDFLAGS="$LDFLAGS"
-        LDFLAGS="$LDFLAGS $TRY -lcpg"
+        saved_LIBS="$LIBS"
+        LIBS="$LIBS $TRY -lcpg"
         AC_LINK_IFELSE([AC_LANG_CALL([], [cpg_initialize])],
         	       cpg_found=yes)
-        LDFLAGS="$saved_LDFLAGS"
+        LIBS="$saved_LIBS"
 
         if test "x$cpg_found" = "xyes"; then
             CPG_LDFLAGS="$TRY"
@@ -319,11 +319,11 @@ if test "x$ckpt_found" = "xyes"; then
         fi
         # TRY="$TRY"
 
-        saved_LDFLAGS="$LDFLAGS"
-        LDFLAGS="$LDFLAGS $TRY -lSaCkpt"
+        saved_LIBS="$LIBS"
+        LIBS="$LIBS $TRY -lSaCkpt"
         AC_LINK_IFELSE([AC_LANG_CALL([], [saCkptInitialize])],
         	       ckpt_found=yes)
-        LDFLAGS="$saved_LDFLAGS"
+        LIBS="$saved_LIBS"
 
         if test "x$ckpt_found" = "xyes"; then
             AIS_LDFLAGS="$TRY"
