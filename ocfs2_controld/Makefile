@@ -14,7 +14,7 @@ endif
 ifneq ($(BUILD_PCMK_SUPPORT),)
 SBIN_PROGRAMS += ocfs2_controld.pcmk
 # Some pacemaker headers which pacemaker.c includes want this.
-PCMK_INCLUDES = -I/usr/include/pacemaker -I/usr/include/heartbeat/ $(GLIB_CFLAGS)
+PCMK_INCLUDES = -I/usr/include/pacemaker -I/usr/include/heartbeat/ -I/usr/include/libxml2 $(GLIB_CFLAGS)
 endif
 
 INCLUDES = -I$(TOPDIR)/include -I. $(PCMK_INCLUDES)
