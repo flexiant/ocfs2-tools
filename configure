@@ -4919,8 +4919,8 @@ $as_echo_n "checking for cpg_initialize in -lcpg... " >&6; }
         fi
         # TRY="$TRY"
 
-        saved_LDFLAGS="$LDFLAGS"
-        LDFLAGS="$LDFLAGS $TRY -lcpg"
+        saved_LIBS="$LIBS"
+        LIBS="$LIBS $TRY -lcpg"
         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -4944,7 +4944,7 @@ if ac_fn_c_try_link "$LINENO"; then :
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
-        LDFLAGS="$saved_LDFLAGS"
+        LIBS="$saved_LIBS"
 
         if test "x$cpg_found" = "xyes"; then
             CPG_LDFLAGS="$TRY"
@@ -4995,8 +4995,8 @@ $as_echo_n "checking for saCkptInitialize in -lSaCkpt... " >&6; }
         fi
         # TRY="$TRY"
 
-        saved_LDFLAGS="$LDFLAGS"
-        LDFLAGS="$LDFLAGS $TRY -lSaCkpt"
+        saved_LIBS="$LIBS"
+        LIBS="$LIBS $TRY -lSaCkpt"
         cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
@@ -5020,7 +5020,7 @@ if ac_fn_c_try_link "$LINENO"; then :
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
-        LDFLAGS="$saved_LDFLAGS"
+        LIBS="$saved_LIBS"
 
         if test "x$ckpt_found" = "xyes"; then
             AIS_LDFLAGS="$TRY"
