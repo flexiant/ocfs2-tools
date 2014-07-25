@@ -22,6 +22,10 @@
  *  of the GNU General Public License v.2.
  */
 
+#ifndef PCMK_SERVICE_ID
+#define PCMK_SERVICE_ID 9
+#endif
+
 #ifndef __OCFS2_CONTROLD_H
 #define __OCFS2_CONTROLD_H
 
