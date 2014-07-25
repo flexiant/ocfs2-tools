@@ -6,11 +6,11 @@
 #
 ### BEGIN INIT INFO
 # Provides: o2cb
-# Required-Start: $network
-# Should-Start:
-# Required-Stop:
-# Default-Start: 2 3 5
-# Default-Stop:
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $network
+# X-Stop-After: sendsigs
+# Default-Start: S
+# Default-Stop: 0 6
 # Short-Description: Load O2CB cluster services at system boot.
 # Description: Load O2CB cluster services at system boot.
 ### END INIT INFO
