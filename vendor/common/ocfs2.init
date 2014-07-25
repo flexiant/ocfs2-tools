@@ -7,12 +7,13 @@
 #
 ### BEGIN INIT INFO
 # Provides: ocfs2
-# Required-Start: $network o2cb
-# Required-Stop: 
+# Required-Start: $local_fs $network o2cb
+# Required-Stop: $local_fs $network o2cb
 # X-UnitedLinux-Should-Start:
 # X-UnitedLinux-Should-Stop:
-# Default-Start:  2 3 5
-# Default-Stop:
+# X-Stop-After: sendsigs
+# Default-Start: S
+# Default-Stop: 0 6
 # Short-Description: Mount OCFS2 volumes at boot.
 # Description:  Mount OCFS2 volumes at boot.
 ### END INIT INFO
