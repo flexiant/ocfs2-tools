@@ -14,3 +14,9 @@ ocfs2console
 ocfs2-tools-dev.debhelper.log
 ocfs2-tools-dev
 ocfs2-tools.debhelper.log
+stamp-autotools
+stamp-autotools-files
+stamp-makefile-build
+stamp-makefile-install
+autoreconf.after
+autoreconf.before

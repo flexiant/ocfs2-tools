@@ -1,16 +1,21 @@
 #!/usr/bin/make -f
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/autoreconf.mk
 
-%:
-	dh $@ --with python2,autoreconf,autotools_dev
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-debug \
+	--enable-dynamic-ctl \
+	--enable-dynamic-fsck
+DEB_INSTALL_EXAMPLES_ocfs2-tools = documentation/samples/cluster.conf
 
-override_dh_autoreconf:
-	autoreconf -f -i -I/usr/share/aclocal
-
-override_dh_auto_configure:
-	dh_auto_configure -- --disable-debug --enable-dynamic-ctl --enable-dynamic-fsck
-
-override_dh_installinit:
+common-install-arch::
 	cp -f vendor/common/o2cb.init debian/ocfs2-tools.o2cb.init
 	cp -f vendor/common/ocfs2.init debian/ocfs2-tools.ocfs2.init
-	dh_installinit -pocfs2-tools --name=o2cb --no-restart-on-upgrade -- start 41 S . stop 6 0 6 . 
-	dh_installinit -pocfs2-tools --name=ocfs2 --no-restart-on-upgrade -- start 65 S . stop 2 0 6 .
+
+binary-install/ocfs2-tools::
+	dh_installinit -p$(cdbs_curpkg) --name=o2cb --no-restart-on-upgrade -- start 41 S . stop 6 0 6 . 
+	dh_installinit -p$(cdbs_curpkg) --name=ocfs2 --no-restart-on-upgrade -- start 65 S . stop 2 0 6 .
+
+clean::
+	rm -f debian/ocfs2-tools.o2cb.*
+	rm -f vendor/common/ocfs2-tools.spec-generic
