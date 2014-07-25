@@ -1,0 +1,4 @@
+debian/ocfs2-tools.o2cb.*
+ocfs2console/ocfs2interface/*.so
+ocfs2console/ocfs2interface/confdefs.py
+vendor/common/ocfs2-tools.spec-generic

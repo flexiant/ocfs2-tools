@@ -1,24 +1,17 @@
 # translation of po-debconf template to German
+# This file is distributed under the same license as the ocfs2-tools package.
+# Copyright (C):
 #
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
-#    Developers do not need to manually edit POT or PO files.
-#
-# Matthias Julius <mdeb@julius-net.net>, 2006.
+# Matthias Julius <mdeb@julius-net.net>, 2006, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: ocfs2-tools 1.2.1-1.2\n"
-"Report-Msgid-Bugs-To: Source: ocfs2-tools@packages.debian.org\n"
-"POT-Creation-Date: 2007-11-19 06:56+0100\n"
-"PO-Revision-Date: 2006-12-14 21:25-0500\n"
+"Project-Id-Version: ocfs2-tools 1.2.4-1\n"
+"Report-Msgid-Bugs-To: ocfs2-tools@packages.debian.org\n"
+"POT-Creation-Date: 2010-03-12 19:27+0100\n"
+"PO-Revision-Date: 2008-02-16 00:09-0500\n"
 "Last-Translator: Matthias Julius <mdeb@julius-net.net>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +34,7 @@ msgstr "Name des Clusters, der beim Systemstart gestartet werden soll:"
 #. Description
 #: ../ocfs2-tools.templates:3001
 msgid "O2CB heartbeat threshold:"
-msgstr "Grenzwert des O2BC-Heartbeats:"
+msgstr "Schwellwert des O2BC-Heartbeats:"
 
 #. Type: string
 #. Description
@@ -51,7 +44,7 @@ msgid ""
 "awaits for an I/O operation. After it, the node \"fences\" itself, and you "
 "will probably see a crash."
 msgstr ""
-"Der Grenzwert des O2CB-Heartbeats bestimmt die maximale Zeit in Sekunden, "
+"Der Schwellwert des O2CB-Heartbeats bestimmt die maximale Zeit in Sekunden, "
 "die ein Knoten für eine E/A-Operation abwartet. Danach »grenzt« sich der "
 "Knoten aus, und Sie werden wahrscheinlich einen Absturz beobachten."
 
@@ -59,7 +52,7 @@ msgstr ""
 #. Description
 #: ../ocfs2-tools.templates:3001
 msgid "It is calculated as the result of: (threshold - 1) x 2."
-msgstr "Er ist berechnet als das Ergebnis von: (Grenzwert - 1) x 2."
+msgstr "Er berechnet sich wie folgt: (Schwellwert - 1) x 2."
 
 #. Type: string
 #. Description
@@ -80,7 +73,7 @@ msgstr ""
 #. Description
 #: ../ocfs2-tools.templates:4001
 msgid "O2CB idle timeout:"
-msgstr ""
+msgstr "O2CB-Leerlaufzeitlimit:"
 
 #. Type: string
 #. Description
@@ -89,46 +82,50 @@ msgid ""
 "The O2CB idle timeout (expressed in milliseconds) is the time before a "
 "network connection is considered dead."
 msgstr ""
+"Das O2CB-Leerlaufzeitlimit (in Millisekunden) ist die Zeit, nach der eine "
+"Netzwerkverbindung als tot angesehen wird."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:4001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 30000 (30 seconds) and the minimum recommended value is "
 "5000 (5 seconds)."
-msgstr "Der voreingestellte Wert ist 7 (12 Sekunden)."
+msgstr ""
+"Der voreingestellte Wert ist 30000 (30 Sekunden) und der minimale empfohlene "
+"Wert ist 2000 (2 Sekunden)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid "O2CB keepalive delay:"
-msgstr ""
+msgstr "O2CB-Keepalive-Verzögerung:"
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
 msgid ""
 "The O2CB keepalive delay (expressed in milliseconds) is the maximum time "
-"before a keepalive package is sent."
+"before a keepalive packet is sent."
 msgstr ""
+"Die O2CB-Keepalive-Verzögerung (in Millisekunden) ist die maximale Zeit, "
+"nach der ein Keepalive-Paket gesendet wird."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:5001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid ""
 "Its default value is 2000 (2 seconds) and the minimum recommended value is "
 "1000 (1 second)."
-msgstr "Der voreingestellte Wert ist 7 (12 Sekunden)."
+msgstr ""
+"Der voreingestellte Wert ist 2000 (2 Sekunden) und der minimale empfohlene "
+"Wert ist 1000 (1 Sekunde)."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
 msgid "O2CB reconnect delay:"
-msgstr ""
+msgstr "O2CB-Wiederverbindungsverzögerung:"
 
 #. Type: string
 #. Description
@@ -137,11 +134,12 @@ msgid ""
 "The O2CB reconnect delay (expressed in milliseconds) is the minimum time "
 "between connection attempts."
 msgstr ""
+"Die O2CB-Wiederverbindungsverzögerung (in Millisekunden) ist die minimale "
+"Zeit zwischen Verbindungsversuchen."
 
 #. Type: string
 #. Description
 #: ../ocfs2-tools.templates:6001
-#, fuzzy
-#| msgid "Its default value is 7 (12 seconds)."
 msgid "Its default and recommended minimum value is 2000 (2 seconds)."
-msgstr "Der voreingestellte Wert ist 7 (12 Sekunden)."
+msgstr ""
+"Der voreingestellte und empfohlene minimale Wert ist 2000 (2 Sekunden)."
