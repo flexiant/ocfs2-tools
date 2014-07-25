@@ -42,7 +42,7 @@ Type: string
 Default: 2000
 _Description: O2CB keepalive delay:
  The O2CB keepalive delay (expressed in milliseconds) is the maximum time before
- a keepalive package is sent.
+ a keepalive packet is sent.
  .
  Its default value is 2000 (2 seconds) and the minimum recommended value
  is 1000 (1 second).

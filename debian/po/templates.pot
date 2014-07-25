@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: Source: ocfs2-tools@packages.debian.org\n"
-"POT-Creation-Date: 2007-11-19 06:56+0100\n"
+"Report-Msgid-Bugs-To: ocfs2-tools@packages.debian.org\n"
+"POT-Creation-Date: 2010-03-12 19:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: ../ocfs2-tools.templates:5001
 msgid ""
 "The O2CB keepalive delay (expressed in milliseconds) is the maximum time "
-"before a keepalive package is sent."
+"before a keepalive packet is sent."
 msgstr ""
 
 #. Type: string

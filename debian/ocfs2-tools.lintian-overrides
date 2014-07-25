@@ -1,0 +1,3 @@
+# ocfs2 should only be stopped on shutdown or reboot
+ocfs2-tools: init.d-script-possible-missing-stop etc/init.d/ocfs2 1
+ocfs2-tools: init.d-script-possible-missing-stop etc/init.d/o2cb 1
