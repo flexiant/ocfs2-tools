@@ -1,3 +1,9 @@
+ocfs2-tools (1.8.2-flexiant3) UNRELEASED; urgency=medium
+
+  * Sync with 1.8.2 master
+
+ -- Alex Bligh <alex@flexiant.com>  Fri, 12 Dec 2014 19:39:31 +0000
+
 ocfs2-tools (1.8.2-flexiant2) precise; urgency=low
 
   * Import 1.8.2 source
