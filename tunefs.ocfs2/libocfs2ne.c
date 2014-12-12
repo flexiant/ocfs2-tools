@@ -331,7 +331,9 @@ errcode_t tunefs_clear_in_progress(ocfs2_filesys *fs, int flag)
 	return ocfs2_write_primary_super(fs);
 }
 
-errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size)
+errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size,
+				  ocfs2_fs_options mask,
+				  ocfs2_fs_options options)
 {
 	errcode_t ret = 0;
 	char jrnl_file[OCFS2_MAX_FILENAME_LEN];
@@ -343,6 +345,8 @@ errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size)
 	struct ocfs2_dinode *di;
 	struct tunefs_filesystem_state *state = tunefs_get_state(fs);
 	struct tools_progress *prog;
+	ocfs2_fs_options new_features, *newfeat = &new_features, *curfeat;
+	int features_change;
 
 	num_clusters =
 		ocfs2_clusters_in_blocks(fs,
@@ -379,6 +383,21 @@ errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size)
 		return ret;
 	}
 
+	curfeat = &state->ts_journal_features;
+	newfeat->opt_compat =
+		(curfeat->opt_compat & ~mask.opt_compat) |
+		(options.opt_compat & mask.opt_compat);
+	newfeat->opt_incompat =
+		(curfeat->opt_incompat & ~mask.opt_incompat) |
+		(options.opt_incompat & mask.opt_incompat);
+	newfeat->opt_ro_compat =
+		(curfeat->opt_ro_compat & ~mask.opt_ro_compat) |
+		(options.opt_ro_compat & mask.opt_ro_compat);
+	features_change =
+		(newfeat->opt_compat ^ curfeat->opt_compat) ||
+		(newfeat->opt_incompat ^ curfeat->opt_incompat) ||
+		(newfeat->opt_ro_compat ^ curfeat->opt_ro_compat);
+
 	for (i = 0; i < max_slots; ++i) {
 		ocfs2_sprintf_system_inode_name(jrnl_file,
 						OCFS2_MAX_FILENAME_LEN,
@@ -404,7 +423,7 @@ errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size)
 		}
 
 		di = (struct ocfs2_dinode *)buf;
-		if (num_clusters == di->i_clusters) {
+		if (num_clusters == di->i_clusters && !features_change) {
 			tools_progress_step(prog, 1);
 			continue;
 		}
@@ -412,8 +431,7 @@ errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size)
 		verbosef(VL_LIB,
 			 "Resizing journal \"%s\" to %"PRIu32" clusters\n",
 			 jrnl_file, num_clusters);
-		ret = ocfs2_make_journal(fs, blkno, num_clusters,
-					 &state->ts_journal_features);
+		ret = ocfs2_make_journal(fs, blkno, num_clusters, newfeat);
 		if (ret) {
 			verbosef(VL_LIB,
 				 "%s while resizing \"%s\" at block "
@@ -1621,6 +1639,13 @@ static errcode_t tunefs_global_bitmap_check(ocfs2_filesys *fs)
 	di = (struct ocfs2_dinode *)buf;
 	cl = &(di->id2.i_chain);
 
+	/* Warm up the cache with the groups */
+	ret = ocfs2_cache_chain_allocator_blocks(fs, di);
+	if (ret)
+		verbosef(VL_LIB, "Caching global bitmap failed, err %d\n",
+			 (int)ret);
+	ret = 0;
+
 	for (i = 0; i < cl->cl_next_free_rec; ++i) {
 		ret = tunefs_validate_chain_group(fs, di, i);
 		if (ret)
@@ -2078,6 +2103,14 @@ out:
 	}
 
 	return err;
+}
+
+int tunefs_is_journal64(ocfs2_filesys *fs)
+{
+	struct tunefs_filesystem_state *state = tunefs_get_state(fs);
+	if (state->ts_journal_features.opt_incompat & JBD2_FEATURE_INCOMPAT_64BIT)
+		return 1;
+	return 0;
 }
 
 errcode_t tunefs_close(ocfs2_filesys *fs)

@@ -220,7 +220,9 @@ errcode_t tunefs_get_number(char *arg, uint64_t *res);
  * Set all journals to new_size.  If new_size is 0, it will set all
  * journals to the size of the largest existing journal.
  */
-errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size);
+errcode_t tunefs_set_journal_size(ocfs2_filesys *fs, uint64_t new_size,
+				  ocfs2_fs_options mask,
+				  ocfs2_fs_options options);
 
 /* Determine how many clusters the filesystem has free */
 errcode_t tunefs_get_free_clusters(ocfs2_filesys *fs, uint32_t *clusters);
@@ -310,5 +312,6 @@ errcode_t tunefs_prepare_dir_trailer(ocfs2_filesys *fs,
 errcode_t tunefs_install_dir_trailer(ocfs2_filesys *fs, struct ocfs2_dinode *di,
 				struct tunefs_trailer_context *tc);
 void tunefs_trailer_context_free(struct tunefs_trailer_context *tc);
+int tunefs_is_journal64(ocfs2_filesys *fs);
 
 #endif  /* _LIBTUNEFS_H */

@@ -5,7 +5,7 @@ include $(TOPDIR)/Preamble.make
 LIBTOOLS_INTERNAL_LIBS = -L$(TOPDIR)/libtools-internal -ltools-internal
 LIBTOOLS_INTERNAL_DEPS = $(TOPDIR)/libtools-internal/libtools-internal.a
 
-LIBOCFS2_LIBS = -L$(TOPDIR)/libocfs2 -locfs2 -laio
+LIBOCFS2_LIBS = -L$(TOPDIR)/libocfs2 -locfs2
 LIBOCFS2_DEPS = $(TOPDIR)/libocfs2/libocfs2.a
 
 LIBO2DLM_LIBS = -L$(TOPDIR)/libo2dlm -lo2dlm $(DL_LIBS)
@@ -40,6 +40,7 @@ OCFS2NE_OPERATIONS =			\
 	op_resize_volume		\
 	op_set_label			\
 	op_set_journal_size		\
+	op_set_journal_block		\
 	op_set_slot_count		\
 	op_update_cluster_stack		\
 	op_set_quota_sync_interval	\
@@ -67,11 +68,11 @@ debug_%.o : %.c
 
 debug_op_features: debug_op_features.o $(OCFS2NE_FEATURE_OBJS) libocfs2ne.a $(LIBOCFS2_DEPS) $(LIBO2DLM_DEPS) $(LIBO2CB_DEPS) $(LIBTOOLS_INTERNAL_DEPS)
 	$(LINK) $(LIBOCFS2_LIBS) $(UUID_LIBS) $(LIBO2DLM_LIBS) \
-		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS)
+		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS) $(AIO_LIBS)
 
 debug_%: debug_%.o libocfs2ne.a $(LIBOCFS2_DEPS) $(LIBO2DLM_DEPS) $(LIBO2CB_DEPS) $(LIBTOOLS_INTERNAL_DEPS)
 	$(LINK) $(LIBOCFS2_LIBS) $(UUID_LIBS) $(LIBO2DLM_LIBS) \
-		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS)
+		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS) $(AIO_LIBS)
 endif
 
 LIBOCFS2NE_CFILES = libocfs2ne.c
@@ -107,10 +108,10 @@ libocfs2ne.a: $(LIBOCFS2NE_OBJS)
 
 ocfs2ne: $(OCFS2NE_OBJS) libocfs2ne.a $(LIBOCFS2_DEPS) $(LIBO2DLM_DEPS) $(LIBO2CB_DEPS) $(LIBTOOLS_INTERNAL_DEPS)
 	$(LINK) $(LIBOCFS2_LIBS) $(UUID_LIBS) $(LIBO2DLM_LIBS) \
-		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS)
+		$(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(COM_ERR_LIBS) $(AIO_LIBS)
 
 o2cluster: ${O2CLUSTER_OBJS} $(LIBOCFS2_DEPS) $(LIBO2CB_DEPS) $(LIBTOOLS_INTERNAL_DEPS) $(LIBO2DLM_DEPS)
-	$(LINK) $(LIBOCFS2_LIBS) $(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(LIBO2DLM_LIBS) $(COM_ERR_LIBS)
+	$(LINK) $(LIBOCFS2_LIBS) $(LIBO2CB_LIBS) $(LIBTOOLS_INTERNAL_LIBS) $(LIBO2DLM_LIBS) $(COM_ERR_LIBS) $(AIO_LIBS)
 
 tunefs.ocfs2: ocfs2ne
 	ln -f ocfs2ne tunefs.ocfs2

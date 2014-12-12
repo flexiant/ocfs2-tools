@@ -94,6 +94,8 @@ extern struct tunefs_operation reset_uuid_op;
 extern struct tunefs_operation features_op;
 extern struct tunefs_operation resize_volume_op;
 extern struct tunefs_operation set_journal_size_op;
+extern struct tunefs_operation set_journal_block32_op;
+extern struct tunefs_operation set_journal_block64_op;
 extern struct tunefs_operation set_label_op;
 extern struct tunefs_operation set_slot_count_op;
 extern struct tunefs_operation update_cluster_stack_op;
@@ -115,9 +117,37 @@ static struct tunefs_journal_option set_journal_size_option = {
 	.jo_op		= &set_journal_size_op,
 };
 
+static struct tunefs_journal_option set_journal_block64_option = {
+	.jo_name        = "block64",
+	.jo_help        = "block64",
+	.jo_op          = &set_journal_block64_op,
+};
+
+static struct tunefs_journal_option set_journal_block32_option = {
+	.jo_name        = "block32",
+	.jo_help        = "block32",
+	.jo_op          = &set_journal_block32_op,
+};
+
+static struct tunefs_journal_option set_journal_noblock64_option = {
+	.jo_name        = "noblock64",
+	.jo_help        = "noblock64",
+	.jo_op          = &set_journal_block32_op,
+};
+
+static struct tunefs_journal_option set_journal_noblock32_option = {
+	.jo_name        = "noblock32",
+	.jo_help        = "noblock32",
+	.jo_op          = &set_journal_block64_op,
+};
+
 /* The list of all supported journal options */
 static struct tunefs_journal_option *tunefs_journal_options[] = {
 	&set_journal_size_option,
+	&set_journal_block64_option,
+	&set_journal_block32_option,
+	&set_journal_noblock64_option,
+	&set_journal_noblock32_option,
 	NULL,
 };
 
@@ -880,7 +910,6 @@ static errcode_t parse_options(int argc, char *argv[], char **device)
 	int c;
 	errcode_t err;
 	struct option *long_options = NULL;
-	char error[PATH_MAX];
 	char *optstring = NULL;
 	struct tunefs_option *opt;
 
@@ -889,7 +918,6 @@ static errcode_t parse_options(int argc, char *argv[], char **device)
 		goto out;
 
 	opterr = 0;
-	error[0] = '\0';
 	while ((c = getopt_long(argc, argv, optstring,
 				long_options, NULL)) != EOF) {
 		opt = NULL;

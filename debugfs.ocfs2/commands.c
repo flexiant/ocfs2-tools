@@ -230,7 +230,7 @@ static struct command commands[] = {
 	},
 	{ "net_stats",
 		do_net_stats,
-		"net_stats [interval [count]]",
+		"net_stats [-f <file>] [interval [count]]",
 		"Show net statistics",
 	},
 	{ "ncheck",
@@ -1252,13 +1252,13 @@ static int dirblocks_proxy(ocfs2_filesys *fs, uint64_t blkno,
 
 	ret = ocfs2_read_dir_block(fs, ctxt->di, blkno, ctxt->buf);
 	if (!ret) {
-		fprintf(ctxt->out, "\tDirbloc: %"PRIu64"\n", blkno);
+		fprintf(ctxt->out, "\tDirblock: %"PRIu64"\n", blkno);
 		dump_dir_block(ctxt->out, ctxt->buf);
 	} else
 		com_err(gbls.cmd, ret,
 			"while reading dirblock %"PRIu64" on inode "
 			"%"PRIu64"\n",
-			blkno, ctxt->di->i_blkno);
+			blkno, (uint64_t)ctxt->di->i_blkno);
 	return 0;
 }
 
@@ -2076,7 +2076,7 @@ static void walk_refcount_block(FILE *out, struct ocfs2_refcount_block *rb,
 			com_err("refcount", ret,
 				"while traversing the extent tree "
 				"of refcount block %"PRIu64,
-				rb->rf_blkno);
+				(uint64_t)rb->rf_blkno);
 	}
 
 	ret = ocfs2_malloc_block(gbls.fs->fs_io, &buf);
@@ -2093,7 +2093,7 @@ static void walk_refcount_block(FILE *out, struct ocfs2_refcount_block *rb,
 			com_err("refcount", ret,
 				"while looking up next refcount leaf in "
 				"recount block %"PRIu64"\n",
-				rb->rf_blkno);
+				(uint64_t)rb->rf_blkno);
 			break;
 		}
 
@@ -2189,20 +2189,39 @@ static void do_refcount(char **args)
 static void do_net_stats(char **args)
 {
 	int interval = 0, count = 0;
-	char *net_stats_usage = "usage: net_stats [interval [count]]";
+	char *net_stats_usage = "usage: net_stats [-f <file>] [interval [count]]";
 	char *endptr;
+	char *path = NULL;
+	int c, argc;
 
-	if (args[1]) {
-		interval = strtoul(args[1], &endptr, 0);
-		if (!*endptr && args[2])
-			count = strtoul(args[2], &endptr, 0);
+	for (argc = 0; (args[argc]); ++argc);
+	optind = 0;
+
+	while ((c = getopt(argc, args, "f:")) != -1) {
+		switch (c) {
+		case 'f':
+			path = optarg;
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (args[optind]) {
+		interval = strtoul(args[optind], &endptr, 0);
+		if (!*endptr && args[++optind])
+			count = strtoul(args[optind], &endptr, 0);
 		if (*endptr) {
 			fprintf(stderr, "%s\n", net_stats_usage);
 			return ;
 		}
 	}
 
-	dump_net_stats(stdout, interval, count);
+	/* Ignore device is user specifies the stats file */
+	if (path == NULL && check_device_open())
+		return;
+
+	dump_net_stats(stdout, path, interval, count);
 }
 
 static void do_stat_sysdir(char **args)

@@ -405,7 +405,7 @@ static int do_fiemap(int fd, int flags, struct o2info_fiemap *ofp)
 	char buf[4096];
 
 	int ret = 0, last = 0;
-	int cluster_shift = 0, blk_shift = 0;
+	int cluster_shift = 0;
 	int count = (sizeof(buf) - sizeof(struct fiemap)) /
 		     sizeof(struct fiemap_extent);
 
@@ -414,13 +414,10 @@ static int do_fiemap(int fd, int flags, struct o2info_fiemap *ofp)
 	uint32_t num_extents = 0, extents_got = 0, i;
 
 	uint32_t prev_start = 0, prev_len = 0;
-	uint32_t start = 0, len = 0, phy_pos = 0;
+	uint32_t start = 0, len = 0;
 
 	if (ofp->clustersize)
 		cluster_shift = ul_log2(ofp->clustersize);
-
-	if (ofp->blocksize)
-		blk_shift = ul_log2(ofp->blocksize);
 
 	memset(fiemap, 0, sizeof(*fiemap));
 
@@ -456,7 +453,6 @@ static int do_fiemap(int fd, int flags, struct o2info_fiemap *ofp)
 
 			start = fm_ext[i].fe_logical >> cluster_shift;
 			len = fm_ext[i].fe_length >> cluster_shift;
-			phy_pos = fm_ext[i].fe_physical >> blk_shift;
 
 			if (fiemap->fm_flags & FIEMAP_FLAG_XATTR) {
 				ofp->xattr += len;
