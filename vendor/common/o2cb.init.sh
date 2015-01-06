@@ -1351,10 +1351,13 @@ register_cluster_o2cb()
     fi
     CLUSTER="$1"
 
-    if ! [ -f ${CLUSTERCONF} ]
+    echo -n "Checking O2CB cluster configuration : "
+    if [ -f ${CLUSTERCONF} ]
     then
-        echo -n "Checking O2CB cluster configuration : "
-        if_fail 1
+        echo "OK"
+    else
+        echo "Failed"
+	return 1
     fi
 
     echo -n "Registering O2CB cluster \"${CLUSTER}\": "
