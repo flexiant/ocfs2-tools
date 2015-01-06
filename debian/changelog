@@ -1,3 +1,9 @@
+ocfs2-tools (1.8.2-flexiant4) UNRELEASED; urgency=medium
+
+  * Stop o2cb init script erroring if cluster.conf is not present
+
+ -- Alex Bligh <alex@flexiant.com>  Mon, 06 Jan 2015 16:29:20 +0000
+
 ocfs2-tools (1.8.2-flexiant3) UNRELEASED; urgency=medium
 
   * Sync with 1.8.2 master
