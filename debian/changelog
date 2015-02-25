@@ -1,3 +1,26 @@
+ocfs2-tools (1.8.4-flexiant1) UNRELEASED; urgency=medium
+
+  * 3a2d5b0 2015-01-06 | Don't fail o2cb start (HEAD, github/ubuntu-trusty-1.8.4, ubuntu-trusty-1.8.4) [Alex Bligh]
+  * a921173 2014-07-25 | Delete debian/source [Alex Bligh]
+  * 9a72628 2014-07-25 | Fix .gitignore [Alex Bligh]
+  * 8ea38fc 2015-02-25 | Use CDBS like we did on trusty, so we get stack protector etc [Alex Bligh]
+  * 0062e55 2014-07-25 | Fix start/stop in o2cb init functions [Alex Bligh]
+  * b644071 2013-01-08 | Add o2cb binary and manpage to package [Alex Bligh]
+  * 04149bd 2014-07-25 | Remove obsolete ocfs2console [Alex Bligh]
+  * cd498fc 2014-07-25 | Apply python-multiarch-includes.patch [Alex Bligh]
+  * 5c04136 2013-01-07 | Apply last hunk of format-security.patch [Alex Bligh]
+  * 4a7cf80 2014-07-25 | Apply ocfs2-controld-pcmk-id.patch [Alex Bligh]
+  * 9a8bece 2013-01-07 | Applied popen2-ignore-depreciation-warn.patch [Alex Bligh]
+  * 441e016 2013-01-07 | Added patched up version of ld-as-needed.diff [Alex Bligh]
+  * b6070f4 2014-07-25 | Apply ocfs2-init-script.patch [Alex Bligh]
+  * 9979a6e 2014-07-25 | Apply ocfs2-controld-includes.patch [Alex Bligh]
+  * 828aad9 2014-07-25 | Apply libo2dlm-dlopen-libdlm_lt.patch [Alex Bligh]
+  * 7092cf6 2014-07-25 | Add libaio-dev [Alex Bligh]
+  * 33e6f73 2014-07-25 | Update debian directory to trusty [Alex Bligh]
+  * 0b8be47 2015-01-30 | tools: Up version to 1.8.4 (tag: ocfs2-tools-1.8.4, oracle/master) [Srinivas Eeda]
+
+ -- Alex Bligh <alex@flexiant.com>  Wed, 25 Feb 2015 18:18:03 +0000
+
 ocfs2-tools (1.6.4-3ubuntu1) trusty; urgency=medium
 
   * Merge with Debian; remaining changes:
