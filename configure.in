@@ -1,6 +1,7 @@
-AC_PREREQ(2.54)
+AC_PREREQ([2.69])
 
-AC_INIT(libocfs2/bitmap.c)
+AC_INIT
+AC_CONFIG_SRCDIR([libocfs2/bitmap.c])
 
 PACKAGE=ocfs2-tools
 
@@ -166,13 +167,13 @@ CFLAGS="$CFLAGS $GLIB_CFLAGS"
 LIBS="-static $LIBS $GLIB_LIBS $COM_ERR_LIBS"
 
 AC_MSG_CHECKING(whether glib and com_err can be linked statically)
-AC_TRY_LINK([
+AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 #include <et/com_err.h>
 #include <glib.h>
 #include <stdio.h>
-], [ char *e = error_message(-1); return ((glib_major_version) || (glib_minor_version) || (glib_micro_version)); ], [
+]], [[ char *e = error_message(-1); return ((glib_major_version) || (glib_minor_version) || (glib_micro_version)); ]])],[
 static_lib_link=yes
-], [
+],[
 static_lib_link=no
 ])
 AC_MSG_RESULT($static_lib_link)

@@ -5,7 +5,7 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Jeremy Lainé <jeremy.laine@m4x.org>
 Uploaders: Frederik Schüler <fs@debian.org>
 Standards-Version: 3.9.4
-Build-Depends: debhelper (>= 7.0.50~), po-debconf, autotools-dev, comerr-dev, uuid-dev, libncurses5-dev, libreadline-dev, libglib2.0-dev (>= 2.2.3), libblkid-dev (>= 1.36), libbz2-dev, libdevmapper-dev, libdlm-dev, libdlmcontrol-dev, libxml2-dev, python-dev, python-gtk2, dh-autoreconf, libaio-dev
+Build-Depends: cdbs, debhelper (>= 7.0.50~), po-debconf, autotools-dev, comerr-dev, uuid-dev, libncurses5-dev, libreadline-dev, libglib2.0-dev (>= 2.2.3), libblkid-dev (>= 1.36), libbz2-dev, libdevmapper-dev, libdlm-dev, libdlmcontrol-dev, libxml2-dev, python-dev, python-gtk2, dh-autoreconf, libaio-dev
 Homepage: http://oss.oracle.com/projects/ocfs2-tools/
 Vcs-Svn: svn://svn.debian.org/collab-maint/deb-maint/ocfs2-tools/trunk/
 Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/deb-maint/ocfs2-tools/trunk/
